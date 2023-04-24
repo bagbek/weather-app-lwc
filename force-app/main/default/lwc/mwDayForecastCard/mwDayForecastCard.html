@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : pelayochristian.dev@gmail.com
+  @last modified on  : 07-08-2022
+  @last modified by  : pelayochristian.dev@gmail.com
+-->
+<template>
+    <template if:true={isActive}>
+        <div class="slds-box day-forecast-box active-card">
+            <div class="slds-align_absolute-center">
+                <p class="">{dayName}</p>
+            </div>
+            <div class="slds-align_absolute-center">
+                <img src={weatherIcon} alt="" class="weather-icon" />
+            </div>
+            <div class="slds-align_absolute-center">
+                <p class="daily-temp">
+                    {dayTemp}° -
+                    <span class="night-temp-active">{nightTemp}°</span>
+                </p>
+            </div>
+        </div>
+    </template>
+    <template if:false={isActive}>
+        <div class="slds-box day-forecast-box">
+            <div class="slds-align_absolute-center">
+                <p class="">{dayName}</p>
+            </div>
+            <div class="slds-align_absolute-center">
+                <img src={weatherIcon} alt="" class="weather-icon" />
+            </div>
+            <div class="slds-align_absolute-center">
+                <p class="daily-temp">
+                    {dayTemp}° - <span class="night-temp">{nightTemp}°</span>
+                </p>
+            </div>
+        </div>
+    </template>
+</template>

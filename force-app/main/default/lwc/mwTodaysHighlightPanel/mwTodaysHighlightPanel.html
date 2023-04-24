@@ -1,0 +1,336 @@
+<!--
+  @description       : Today's Highlight Panel Html Component
+  @author            : pelayochristian.dev@gmail.com
+  @last modified on  : 07-10-2022
+  @last modified by  : pelayochristian.dev@gmail.com
+-->
+<template>
+    <div>
+        <div class="slds-m-bottom_x-large">
+            <p class="week-forcast-text">Today’s Highlights</p>
+        </div>
+        <div class="slds-m-bottom_medium">
+            <div class="slds-grid slds-gutters">
+                <!-- UV Index Slot -->
+                <div class="slds-col">
+                    <c-mw-highlight-slot>
+                        <span slot="highlight-header">UV Index</span>
+                        <template if:true={isUVIAvailable}>
+                            <p slot="primary-metric" class="primary-metric">
+                                {uvi}
+                            </p>
+                        </template>
+                        <template if:false={isUVIAvailable}>
+                            <div
+                                slot="primary-metric"
+                                class="demo-only"
+                                style="height: 66.5px; position: relative"
+                            >
+                                <div class="slds-spinner_container">
+                                    <div
+                                        role="status"
+                                        class="slds-spinner slds-spinner_medium slds-spinner_brand"
+                                    >
+                                        <span class="slds-assistive-text"
+                                            >Loading</span
+                                        >
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <div slot="secondary-metric">
+                            <template if:true={uviIconsIndicator}>
+                                <div class="slds-grid">
+                                    <div>
+                                        <img
+                                            src={uviIconsIndicator}
+                                            alt="Wind Direction"
+                                            width="40px"
+                                        />
+                                    </div>
+                                    <div class="slds-p-vertical_x-small">
+                                        <p class="secondary-metric">
+                                            {uvRadiationLevel}
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </c-mw-highlight-slot>
+                </div>
+                <!-- Wind Status Slot -->
+                <div class="slds-col">
+                    <c-mw-highlight-slot>
+                        <span slot="highlight-header">Wind Status</span>
+                        <template if:true={windStatus}>
+                            <p slot="primary-metric" class="primary-metric">
+                                {windStatus}
+                                <span class="wind-status-unit">m/s</span>
+                            </p>
+                        </template>
+                        <template if:false={windStatus}>
+                            <div
+                                slot="primary-metric"
+                                class="demo-only"
+                                style="height: 66.5px; position: relative"
+                            >
+                                <div class="slds-spinner_container">
+                                    <div
+                                        role="status"
+                                        class="slds-spinner slds-spinner_medium slds-spinner_brand"
+                                    >
+                                        <span class="slds-assistive-text"
+                                            >Loading</span
+                                        >
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <div slot="secondary-metric">
+                            <template if:true={windDirection}>
+                                <div class="slds-grid">
+                                    <div>
+                                        <img
+                                            src={compass}
+                                            alt="Wind Direction"
+                                            width="40px"
+                                        />
+                                    </div>
+                                    <div class="slds-p-vertical_x-small">
+                                        <p class="secondary-metric">
+                                            {windDirection}
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </c-mw-highlight-slot>
+                </div>
+                <!-- Sunrise & Sunset Slot -->
+                <div class="slds-col">
+                    <c-mw-highlight-slot>
+                        <span slot="highlight-header">Sunrise & Sunset</span>
+                        <template if:true={isSunsetSunriseAvailable}>
+                            <div slot="primary-metric">
+                                <div class="slds-grid slds-grid_vertical">
+                                    <div class="slds-col">
+                                        <div
+                                            class="slds-clearfix slds-align_absolute-center slds-float_left slds-p-right_xx-large"
+                                        >
+                                            <img
+                                                src={sunriseIcon}
+                                                alt="Wind Direction"
+                                                width="60px"
+                                            />
+                                            <div class="slds-m-left_small">
+                                                <p
+                                                    class="weather-secondary-indicator sunset-sunrise-time"
+                                                >
+                                                    {sunrise}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col">
+                                        <div
+                                            class="slds-clearfix slds-align_absolute-center slds-float_left"
+                                        >
+                                            <img
+                                                src={sunsetIcon}
+                                                alt="Wind Direction"
+                                                width="60px"
+                                            />
+                                            <div class="slds-m-left_small">
+                                                <p
+                                                    class="weather-secondary-indicator sunset-sunrise-time"
+                                                >
+                                                    {sunset}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:false={isSunsetSunriseAvailable}>
+                            <div
+                                slot="primary-metric"
+                                class="demo-only"
+                                style="height: 66.5px; position: relative"
+                            >
+                                <div class="slds-spinner_container">
+                                    <div
+                                        role="status"
+                                        class="slds-spinner slds-spinner_medium slds-spinner_brand"
+                                    >
+                                        <span class="slds-assistive-text"
+                                            >Loading</span
+                                        >
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </c-mw-highlight-slot>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="slds-grid slds-gutters">
+                <!-- Humidity Slot -->
+                <div class="slds-col">
+                    <c-mw-highlight-slot>
+                        <span slot="highlight-header">Humidity</span>
+                        <template if:true={humidity}>
+                            <p slot="primary-metric" class="primary-metric">
+                                {humidity}%
+                            </p>
+                        </template>
+                        <template if:false={humidity}>
+                            <div
+                                slot="primary-metric"
+                                class="demo-only"
+                                style="height: 66.5px; position: relative"
+                            >
+                                <div class="slds-spinner_container">
+                                    <div
+                                        role="status"
+                                        class="slds-spinner slds-spinner_medium slds-spinner_brand"
+                                    >
+                                        <span class="slds-assistive-text"
+                                            >Loading</span
+                                        >
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <div slot="secondary-metric">
+                            <template if:true={humidityLevel}>
+                                <div class="slds-grid">
+                                    <div>
+                                        <img
+                                            src={humidityAlertLevelIcon}
+                                            alt="Wind Direction"
+                                            width="40px"
+                                        />
+                                    </div>
+                                    <div class="slds-p-vertical_x-small">
+                                        <p class="secondary-metric">
+                                            {humidityLevel}
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </c-mw-highlight-slot>
+                </div>
+                <!-- Visibility Slot -->
+                <div class="slds-col">
+                    <c-mw-highlight-slot>
+                        <span slot="highlight-header">Visibility</span>
+                        <template if:true={visibility}>
+                            <p slot="primary-metric" class="primary-metric">
+                                {visibility}
+                                <span class="wind-status-unit">km</span>
+                            </p>
+                        </template>
+                        <template if:false={visibility}>
+                            <div
+                                slot="primary-metric"
+                                class="demo-only"
+                                style="height: 66.5px; position: relative"
+                            >
+                                <div class="slds-spinner_container">
+                                    <div
+                                        role="status"
+                                        class="slds-spinner slds-spinner_medium slds-spinner_brand"
+                                    >
+                                        <span class="slds-assistive-text"
+                                            >Loading</span
+                                        >
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <div slot="secondary-metric">
+                            <template if:true={visibilityLevel}>
+                                <div class="slds-grid">
+                                    <div>
+                                        <img
+                                            src={visibilityAlertLevelIcon}
+                                            alt="Wind Direction"
+                                            width="40px"
+                                        />
+                                    </div>
+                                    <div class="slds-p-vertical_x-small">
+                                        <p class="secondary-metric">
+                                            {visibilityLevel}
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </c-mw-highlight-slot>
+                </div>
+                <!-- Dew Point -->
+                <div class="slds-col">
+                    <c-mw-highlight-slot>
+                        <span slot="highlight-header">Dew Point</span>
+                        <template if:true={dew_point}>
+                            <p slot="primary-metric" class="primary-metric">
+                                {dew_point}°C
+                            </p>
+                        </template>
+                        <template if:false={dew_point}>
+                            <div
+                                slot="primary-metric"
+                                class="demo-only"
+                                style="height: 66.5px; position: relative"
+                            >
+                                <div class="slds-spinner_container">
+                                    <div
+                                        role="status"
+                                        class="slds-spinner slds-spinner_medium slds-spinner_brand"
+                                    >
+                                        <span class="slds-assistive-text"
+                                            >Loading</span
+                                        >
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <div slot="secondary-metric">
+                            <template if:true={dewPointLevel}>
+                                <div class="slds-grid">
+                                    <div>
+                                        <img
+                                            src={dewPointAlertLevelIcon}
+                                            alt="Wind Direction"
+                                            width="40px"
+                                        />
+                                    </div>
+                                    <div class="slds-p-vertical_x-small">
+                                        <p class="secondary-metric">
+                                            {dewPointLevel}
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </c-mw-highlight-slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

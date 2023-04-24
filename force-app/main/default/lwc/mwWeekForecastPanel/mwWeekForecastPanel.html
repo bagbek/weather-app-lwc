@@ -1,0 +1,47 @@
+<!--
+  @description       : Week Forecast Panel HTML Template
+  @author            : pelayochristian.dev@gmail.com
+  @last modified on  : 07-07-2022
+  @last modified by  : pelayochristian.dev@gmail.com
+-->
+<template>
+    <div class="slds-m-bottom_x-large">
+        <p class="week-forcast-text">Week Forecast</p>
+    </div>
+    <div>
+        <template if:false={weekForecast}>
+            <div
+                slot="primary-metric"
+                class="demo-only"
+                style="height: 66.5px; position: relative"
+            >
+                <div class="slds-spinner_container">
+                    <div
+                        role="status"
+                        class="slds-spinner slds-spinner_medium slds-spinner_brand"
+                    >
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template if:true={weekForecast}>
+            <div class="slds-grid slds-gutters">
+                <template
+                    for:each={weekForecast}
+                    for:item="daily"
+                    for:index="index"
+                >
+                    <div class="slds-col" key={daily.dt}>
+                        <c-mw-day-forecast-card
+                            daily-forecast={daily}
+                            index={index}
+                        ></c-mw-day-forecast-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

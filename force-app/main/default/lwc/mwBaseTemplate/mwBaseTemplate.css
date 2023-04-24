@@ -1,0 +1,13 @@
+header {
+    height: 29rem;
+    background-color: #011440;
+    opacity: 1;
+    background-image: radial-gradient(#3e4c6b 1.25px, transparent 1.25px),
+        radial-gradient(#3e4c6b 1.25px, #011440 1.25px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+}
+
+main {
+    margin-top: -328px;
+}

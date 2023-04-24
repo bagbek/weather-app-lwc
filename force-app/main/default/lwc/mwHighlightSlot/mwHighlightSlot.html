@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : pelayochristian.dev@gmail.com
+  @last modified on  : 07-01-2022
+  @last modified by  : pelayochristian.dev@gmail.com
+-->
+<template>
+    <div class="slds-box highlight-box">
+        <div class="highlight-header">
+            <slot name="highlight-header"></slot>
+        </div>
+        <div class="slds-align_absolute-center slds-m-vertical_small">
+            <slot name="primary-metric"></slot>
+        </div>
+        <div>
+            <slot name="secondary-metric"></slot>
+        </div>
+    </div>
+</template>

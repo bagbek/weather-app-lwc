@@ -1,0 +1,71 @@
+.side-panel {
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    background-color: white;
+    border: none;
+}
+
+.weather-temperature {
+    font-size: 60px;
+    font-weight: 200;
+}
+
+.weather-date-time {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.weather-secondary-indicator {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.secondary-indicator-icon {
+    width: 50px;
+}
+
+.weather-location {
+    /* background-color: #d9d9d9; */
+    border-radius: 18px;
+}
+
+.weather-location p {
+    font-weight: 400;
+    color: white;
+}
+
+.search-location {
+    border-radius: 35px;
+    height: 35px;
+    background-color: #f6f6f8;
+    border: none;
+    font-weight: 300;
+}
+
+.search-location:focus {
+    outline: none;
+}
+
+.search-location-dropdown {
+    background-color: white;
+}
+
+.current-time {
+    color: #b8b8b8;
+}
+
+.weather-description {
+    font-size: 17px;
+    font-weight: 200;
+    color: #b8b8b8;
+}
+.location-image {
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+.location-state,
+.location-lat-and-lon {
+    font-size: 9px;
+    color: #b8b8b8;
+}

@@ -1,0 +1,15 @@
+.highlight-box {
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+    width: 308px;
+    height: 188px;
+}
+
+.highlight-box p {
+    font-weight: 300;
+}
+
+.highlight-header {
+    color: #b8b8b8;
+}

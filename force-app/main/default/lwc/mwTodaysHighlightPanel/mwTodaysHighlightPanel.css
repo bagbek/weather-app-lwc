@@ -1,0 +1,18 @@
+.primary-metric {
+    font-size: 45px;
+    font-weight: 200;
+}
+
+.secondary-metric {
+    font-weight: 300;
+    margin-left: 5px;
+}
+
+.wind-status-unit {
+    font-size: 18px;
+}
+
+.sunset-sunrise-time {
+    font-size: 21px;
+    font-weight: 300;
+}

@@ -1,0 +1,31 @@
+.weather-icon {
+    max-width: 65px;
+}
+
+.day-forecast-box {
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+}
+
+.day-forecast-box p {
+    font-weight: 300;
+}
+
+.night-temp {
+    color: #b8b8b8;
+}
+
+.daily-temp {
+    font-size: 14px;
+}
+
+.active-card {
+    background-color: #85c8ff;
+    color: white;
+}
+
+.night-temp-active {
+    color: #808080;
+    /* color: #070707; */
+}
